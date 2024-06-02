@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payroll Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Payroll Tracker</h1>
+    <div id="worker-form">
+        <h2>Add/Update Worker</h2>
+        <input type="text" id="worker-name" placeholder="Worker Name">
+        <input type="number" id="hours-worked" placeholder="Hours Worked">
+        <input type="number" id="hourly-wage" placeholder="Hourly Wage">
+        <button onclick="addOrUpdateWorker()">Add/Update Worker</button>
+    </div>
+    <div id="transaction-form">
+        <h2>Add Transaction</h2>
+        <input type="text" id="transaction-worker-name" placeholder="Worker Name">
+        <input type="text" id="transaction-description" placeholder="Description">
+        <input type="number" id="transaction-amount" placeholder="Amount">
+        <select id="transaction-type">
+            <option value="earning">Earning</option>
+            <option value="deduction">Deduction</option>
+        </select>
+        <button onclick="addTransaction()">Add Transaction</button>
+    </div>
+    <div id="summary">
+        <h2>Payroll Summary</h2>
+        <button onclick="displaySummary()">Display Summary</button>
+        <div id="summary-content"></div>
+    </div>
+    <div id="transactions">
+        <h2>Worker Transactions</h2>
+        <input type="text" id="transaction-worker-name-view" placeholder="Worker Name">
+        <button onclick="displayTransactions()">Display Transactions</button>
+        <div id="transaction-content"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
