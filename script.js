@@ -23,10 +23,11 @@ class Worker {
 }
 
 class Transaction {
-    constructor(description, amount, type) {
+    constructor(description, amount, type, date) {
         this.description = description;
         this.amount = amount;
         this.type = type;
+        this.date = date;
     }
 }
 
@@ -56,10 +57,11 @@ function addTransaction() {
     let description = document.getElementById('transaction-description').value;
     let amount = parseFloat(document.getElementById('transaction-amount').value);
     let type = document.getElementById('transaction-type').value;
+    let date = document.getElementById('transaction-date').value;
 
-    if (workerName && description && !isNaN(amount) && type) {
+    if (workerName && description && !isNaN(amount) && type && date) {
         if (workers[workerName]) {
-            let transaction = new Transaction(description, amount, type);
+            let transaction = new Transaction(description, amount, type, date);
             workers[workerName].addTransaction(transaction);
             saveWorkers();
             alert('Transaction added successfully');
@@ -90,7 +92,7 @@ function displayTransactions() {
     if (workers[workerName]) {
         let transactions = workers[workerName].transactions;
         transactions.forEach(t => {
-            transactionContent.innerHTML += `<p>Description: ${t.description}, Amount: $${t.amount.toFixed(2)}, Type: ${t.type}</p>`;
+            transactionContent.innerHTML += `<p>Date: ${t.date}, Description: ${t.description}, Amount: $${t.amount.toFixed(2)}, Type: ${t.type}</p>`;
         });
     } else {
         alert('Worker not found');
